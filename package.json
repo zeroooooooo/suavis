@@ -1,0 +1,78 @@
+{
+  "name": "turborepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/**",
+    "packages/**",
+    "examples/**",
+    "configs/**",
+    "plugins/**",
+    "scripts/**",
+    "tests/**",
+    "docs/**",
+    "playground/**",
+    "bench/**"
+  ],
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "packageManager": "pnpm@8.8.0",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "is-ci || husky install",
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "test": "turbo run test --parallel",
+    "lint": "turbo run lint --parallel",
+    "eslint": "eslint --cache .",
+    "stylelint": "stylelint **/*.{css,scss,sass,less,html,vue,jsx,tsx,svelte,astro,md}",
+    "changeset": "changeset",
+    "commit": "git-cz",
+    "cleanup": "turbo run cleanup && rm -rf ./node_modules"
+  },
+  "devDependencies": {
+    "@changesets/cli": "latest",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "commitizen": "latest",
+    "cz-git": "latest",
+    "eslint": "latest",
+    "eslint-config-custom": "workspace:*",
+    "husky": "latest",
+    "is-ci": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "stylelint": "latest",
+    "stylelint-config-custom": "workspace:*",
+    "turbo": "latest",
+    "typescript": "latest"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "czConfig": "./.cz-configrc.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm lint-staged",
+      "commit-msg": "pnpm commitlint -e $GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,vue,jsx,tsx,html,svelte,astro,json,jsonc,json5,yaml,yml,md}": "eslint --fix",
+    "*.{scss,sass,less,css,html,vue,jsx,tsx,svelte,astro,md}": "stylelint --fix",
+    "*.{ts,js,jsx,tsx,vue,scss,sass,less,css,html,json,jsonc,json5,yaml,yml,md}": [
+      "prettier --write"
+    ]
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/*",
+        "typescript"
+      ]
+    }
+  }
+}

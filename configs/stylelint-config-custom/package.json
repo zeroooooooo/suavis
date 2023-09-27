@@ -1,0 +1,22 @@
+{
+  "name": "stylelint-config-custom",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "devDependencies": {
+    "postcss": "latest",
+    "postcss-html": "latest",
+    "postcss-less": "latest",
+    "postcss-lit": "latest",
+    "postcss-markdown": "latest",
+    "postcss-scss": "latest",
+    "prettier": "latest",
+    "stylelint": "latest",
+    "stylelint-config-clean-order": "latest",
+    "stylelint-config-html": "latest",
+    "stylelint-config-prettier": "latest",
+    "stylelint-config-recommended-vue": "latest",
+    "stylelint-config-standard": "latest",
+    "stylelint-prettier": "latest"
+  }
+}

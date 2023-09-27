@@ -1,0 +1,11 @@
+packages:
+  - "apps/**"
+  - "packages/**"
+  - "examples/**"
+  - "configs/**"
+  - "plugins/**"
+  - "scripts/**"
+  - "tests/**"
+  - "docs/**"
+  - "playground/**"
+  - "bench/**"
